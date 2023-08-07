@@ -19,13 +19,16 @@ public class CrazyCatLady {
 		int va = Integer.parseInt(go);
 			if(va >= 3) {
 				String e = "You're a crazy cat lady.";
-				JOptionPane.showMessageDialog(null,e);
+				JOptionPane.showMessageDialog(null,e);  }
+			else if(va < 3 && va > 1) {
+		//	playVideo(www.youtube.com/watch?v=ja1sXvNCyO0);
+		}
+			else {
+		//	playVideo(www.youtube.com/watch?v=oj_yLBltPE8);
 			}
 		
-		
-		
 	}
-//https://www.youtube.com/watch?v=oj_yLBltPE8
+//https://www.youtube.com/watch?v=oj_yLBltPE8 (frog)
 	static void playVideo(String videoURL) {
 		try {
 			URI uri = new URI(videoURL);
