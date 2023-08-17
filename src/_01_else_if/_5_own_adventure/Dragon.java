@@ -14,15 +14,16 @@ public class Dragon {
 		String dogname = JOptionPane.showInputDialog(null,re);
 		String rde = "What is your name?";
 		String MC = JOptionPane.showInputDialog(null,rde);
-		String e = "Welcome to the Village of Redfell "+MC+"! This has been your home for your whole life. A year ago, you found your dog, "+dogname+", in the forest. You've lived a pretty boring life so far, excited by only the discovery of your dog and the coming birthdays.";
+		String e = "Welcome to the Village of Redfell "+MC+"! This has been your home for your whole life. A year ago, you found your dog, "+dogname+", in the forest. \n You've lived a pretty boring life so far, excited by only the discovery of your dog and the coming birthdays.";
 		JOptionPane.showMessageDialog(null,e);
 		String ed = "At 3 am, there was a strange sound. You went down to investigate, holding your breath as you hear strange muttering from at least two people.";
 		JOptionPane.showMessageDialog(null,ed);
-		String intruders = "Any thoughts you've had so far are dashed as you creep down the stairs to see the intruders in your house. Even in the poor lighting, you can make out the embelym of King George on their clothing. Do you contront them in peace or ambush them? " +dogname+" will try to aid you in any way it can. Type either ambush or peace.";
+		String intruders = "Any thoughts you've had so far are dashed as you creep down the stairs to see the intruders in your house. \n Even in the poor lighting, you can make out the embelym of King George on their clothing. \n Do you contront them in peace or ambush them? " +dogname+" will try to aid you in any way it can. Type either ambush or peace.";
 		String poram = JOptionPane.showInputDialog(null,intruders);	
+		//Try to make it so the peace or ambush thing is a button
 		//this were the ambush route starts
 		if (poram.toLowerCase().equals("ambush")) {
-			ambush();
+			ambush(dogname);
 		}
 		//this is where the peace route starts
 		if(poram.toLowerCase().equals("peace")) {
@@ -31,13 +32,15 @@ public class Dragon {
 	}
 	//methods
 	
-	static void ambush()
+	static void ambush(String dogname)
 	{
-		String reambush = "As quietly as possible, you grab the knife in the kitchen. They're in the room next to it but if you're lucky they won't notice.";
+		String reambush = "As quietly as possible, you grab the knife in the kitchen. \n They're in the room next to it but if you're lucky they won't notice.";
 		JOptionPane.showMessageDialog(null,reambush);
 		int ambushrate = new Random().nextInt(100);
 		if(ambushrate <= 50) {
 			//success
+			String success = "They never see it coming. They're dead before they hit the ground. While the quick and hidden kill pleases you, a part of you knows that it won't be long till the authorities find out. \n You prepare a bag and get ready to leave the village. Both to hide the bodies and to leave before anyone notices the intruders' disapearence. \n" + dogname + " seems especcially troubled by the deaths of the intruders. You go and wash off the blood from every surface and clothing possible.";
+			
 		}
 		if(ambushrate > 50 && ambushrate < 90) {
 			death();
