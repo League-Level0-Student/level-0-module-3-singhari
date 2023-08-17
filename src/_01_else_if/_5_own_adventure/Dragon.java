@@ -23,7 +23,7 @@ public class Dragon {
 		//Try to make it so the peace or ambush thing is a button
 		//this were the ambush route starts
 		if (poram.toLowerCase().equals("ambush")) {
-			ambush(dogname);
+			ambush(dogname, MC);
 		}
 		//this is where the peace route starts
 		if(poram.toLowerCase().equals("peace")) {
@@ -32,7 +32,7 @@ public class Dragon {
 	}
 	//methods
 	
-	static void ambush(String dogname)
+	static void ambush(String dogname, String MC)
 	{
 		String reambush = "As quietly as possible, you grab the knife in the kitchen. \n They're in the room next to it but if you're lucky they won't notice.";
 		JOptionPane.showMessageDialog(null,reambush);
@@ -40,13 +40,22 @@ public class Dragon {
 		if(ambushrate <= 50) {
 			//success
 			String success = "They never see it coming. They're dead before they hit the ground. While the quick and hidden kill pleases you, a part of you knows that it won't be long till the authorities find out. \n You prepare a bag and get ready to leave the village. Both to hide the bodies and to leave before anyone notices the intruders' disapearence. \n" + dogname + " seems especcially troubled by the deaths of the intruders. You go and wash off the blood from every surface and clothing possible.";
-			
+			JOptionPane.showMessageDialog(null,success);
+			String escapeV = "As you escape the village, you have the choice to head east or west. \n To the west is a very small and unknown village. or it would be if it weren't for the manor of the Beast Lord in the area. Despite that, it was a small and quiet town. Outside of the distance it would take to reach the village, the other major problem of heading there was that any half-a-brain cell idiot could figure out a murderer of King George's personal would head there. \n To the east is a marsh. No one will expect you in the marsh as it's known for it's dangers. However, rumors of magic orignating from there are too intriguing for you, and you feel an innate desire to head there. \n Do you go east or west?";
+			String lor = JOptionPane.showInputDialog(null,escapeV);	
+		if(lor.toLowerCase().equals("west")) {
+				west(dogname, MC);
+		}
+		else if(lor.toLowerCase().equals("west")) {
+				east(dogname);
+			}
 		}
 		if(ambushrate > 50 && ambushrate < 90) {
+			//some story
 			death();
 		}
 		else {
-			//prison route
+			prison(dogname);
 		}
 		
 	}
@@ -67,7 +76,7 @@ public class Dragon {
 			JOptionPane.showMessageDialog(null,red);
 			String minus = "You pay up, not daring to breath. The king's army are famous for their poorly concealed corruption.";
 			JOptionPane.showMessageDialog(null,minus);
-			coins = coins -coinpay;
+			coins = coins-coinpay;
 		}
 		if (peacerate >= 90) {
 			//pay 50 coins, dog is killed
@@ -81,6 +90,28 @@ public class Dragon {
 	}
 	static void dogalivepeace(String dogname) {
 		
+	}
+	static void prison(String dogname) {
+		
+	}
+	static void west(String dogname, String MC) {
+		String renewV = "You head to the Village. Asten is a beautiful town, secluded in the forest and dappled with shadows, it has an air of mystersty and home.";
+		JOptionPane.showInputDialog(null,renewV);
+		String relord = "While walking "+dogname+", you hear a shrill scream. \n "+dogname+" tugs you to the site. A part of you knows that the Lord's personal will take care of this situation and that your aid will put unnessarcy attention on you. \n Yet... Another, slightly quietier scream echoes across Asten. The people around you are starting to whisper and you tug your cloak to hide your face better. \n Do you help the person in distress or chose to not attaract attenion? Type either help or stay. ";
+		String lord = JOptionPane.showInputDialog(null,relord);
+		if (lord.toLowerCase().equals("stay")) {
+			death();
+		}
+		else if(lord.toLowerCase().equals("help")) {
+			savetheLord(MC,dogname);
+		}
+	}
+	static void east(String dogname) {
+		
+	}
+	static void savetheLord(String yourname, String dogname) {
+		String start = "You decide to save the person. You run into the direction of the scream. "+dogname+" leds you, equally as intent on saving the person. \n When you reach, your mouth opens with shock. A shockingly beauiful man is being held by what you can only describe as a monster the size of mulitple rooms. /n Actually, you can describe it better. It's a ferret the size of a house. It has a barely viisble wizard hat on, in fact, the hat is the perfect size for a ferret not a house. The more stranger thing was the absoulute size of a golden monocle the ferret wore. \n You look up in shock and you fall to your knees silently. The ferret blots out a part of the sun. Horror is the only emotion you can describe. After a bit, you hear the mysterty hostage speak. \n \" Good sir, please let me down, \" he says with a weak laughter. \n The ferret looks at his soon-to-be meal. Instad of shock, he answers in the most austrailian accent ever, \" Petty human, do you realize I am planning to to throw ya on the barbie. Pop open a cold one and put some snags on the barbie. A perfect day. All you have to do is come along for sum' tea. \"";
+		String idk = JOptionPane.showInputDialog(null,start);
 	}
 	static void death() {
 		String de = "You die.";
