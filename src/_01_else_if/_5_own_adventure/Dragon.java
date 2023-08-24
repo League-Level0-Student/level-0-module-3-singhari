@@ -32,16 +32,15 @@ public class Dragon {
 	}
 	//methods
 	
-	static void ambush(String dogname, String MC)
-	{
+	static void ambush(String dogname, String MC) {
 		String reambush = "As quietly as possible, you grab the knife in the kitchen. \n They're in the room next to it but if you're lucky they won't notice.";
 		JOptionPane.showMessageDialog(null,reambush);
 		int ambushrate = new Random().nextInt(100);
-		if(ambushrate <= 50) {
+		if(ambushrate <= 50 && ambushrate > 10) {
 			//success
 			String success = "They never see it coming. They're dead before they hit the ground. While the quick and hidden kill pleases you, a part of you knows that it won't be long till the authorities find out. \n You prepare a bag and get ready to leave the village. Both to hide the bodies and to leave before anyone notices the intruders' disapearence. \n" + dogname + " seems especcially troubled by the deaths of the intruders. You go and wash off the blood from every surface and clothing possible.";
 			JOptionPane.showMessageDialog(null,success);
-			String escapeV = "As you escape the village, you have the choice to head east or west. \n To the west is a very small and unknown village. or it would be if it weren't for the manor of the Beast Lord in the area. Despite that, it was a small and quiet town. \n Outside of the distance it would take to reach the village, the other major problem of heading there was that any half-a-brain cell idiot could figure out a murderer of King George's personal would head there. \n To the east is a marsh. No one will expect you in the marsh as it's known for it's dangers. However, rumors of magic orignating from there are too intriguing for you, and you feel an innate desire to head there. \n Do you go east or west?";
+			String escapeV = "As you escape the village, you have the choice to head east or west. \n To the west is a very small and unknown village. Or it would be if it weren't for the manor of the Beast Lord in the area. Despite that, it was a small and quiet town. \n Outside of the distance it would take to reach the village, the other major problem of heading there was that any half-a-brain cell idiot could figure out a murderer of King George's personal would head there. \n To the east is a marsh. No one will expect you in the marsh as it's known for it's dangers. However, rumors of magic orignating from there are too intriguing for you, and you feel an innate desire to head there. \n Do you go east or west?";
 			String lor = JOptionPane.showInputDialog(null,escapeV);	
 		if(lor.toLowerCase().equals("west")) {
 				west(dogname, MC);
@@ -92,7 +91,7 @@ public class Dragon {
 		
 	}
 	static void prison(String dogname) {
-		
+		JOptionPane.showMessageDialog(null,"The intruders jump in surprise. Regaining their compusure, they rush at you and +"+dogname +". \n One holds you back and as another pulls out a gleaming knife. You are forced to watch as the intruder kicks "+dogname+" in it's smoatch. He countinues to kick "+dogname+" until "+dogname+"'s whimpering quiets down. \n You watch as the intruder brings his knife to "+dogname+"'s body and he splits "+dogname+" in half. The other intruder knocks you out before you can relatiate.");
 	}
 	static void west(String dogname, String MC) {
 		String renewV = "You head to the Village. Asten is a beautiful town, secluded in the forest and dappled with shadows, it has an air of mystersty and home.";
@@ -107,7 +106,7 @@ public class Dragon {
 		}
 	}
 	static void east(String dogname) {
-		
+		death();
 	}
 	static void savetheLord(String yourname, String dogname) {
 		String start = "You decide to save the person. You run into the direction of the scream. "+dogname+" leds you, equally as intent on saving the person. \n When you reach, your mouth opens with shock. A shockingly beauiful man is being held by what you can only describe as a monster the size of mulitple rooms. \n Actually, you can describe it better. It's a ferret the size of a house. It has a barely viisble wizard hat on, in fact, the hat is the perfect size for a ferret not a house. The more stranger thing was the absoulute size of a golden monocle the ferret wore. \n You look up in shock and you fall to your knees silently. The ferret blots out a part of the sun. Horror is the only emotion you can describe. After a bit, you hear the mysterty hostage speak. \n \" Good sir, please let me down, \" he says with a weak laughter. \n The ferret looks at his soon-to-be meal. Instad of shock, he answers in the most austrailian accent ever, \" Petty human, do you realize I am planning to to throw ya on the barbie. Pop open a cold one and put some snags on the barbie. A perfect day. All you have to do is come along for sum' tea. \"";
@@ -116,10 +115,54 @@ public class Dragon {
 JOptionPane.showMessageDialog(null,frosh);
 String fresh = "Suddenly, you hear a woof. You watch in awe as "+dogname+" soaring through the air. It's holding a sword with it's teeth. You yell out but "+dogname+" lands perfectly beside you. From your vantage point, you can see a group of people hidden in the bushes. They are cheering silently as they watch "+dogname+"land beside you.\n "+dogname+" hands you the sword. With your free hand, you grab the sword. The hostage next to you keeps talking, distracting the ferret. \n You are about to enter combat against the ferret.";
 		JOptionPane.showMessageDialog(null,fresh);
+		ferretFight(yourname);
+	}
+	static void ferretFight(String yourname) {
+		// 1. Create some variables to hold health levels
+				int playerHealth = 100;
+				int ferrethealth = 100;
+				//attacks
+				int playerAttack = 0;
+				int ferretAttack = 0;
+				while (true) {
+					String one = JOptionPane.showInputDialog("Would you like to attack with the ferret with a kick or with your sword?");
+					if (one.equals("sword")) {
+						Random ra = new Random();
+						playerAttack = ra.nextInt(40);
+					}
+					if (one.equals("kick")) {
+						Random t = new Random();
+						playerAttack = t.nextInt(25);
+						}
+						ferrethealth = ferrethealth - playerAttack;
+						Random r = new Random();
+						ferretAttack = r.nextInt(45);
+						playerHealth=playerHealth-ferretAttack;
+						if (playerHealth < 1) {
+							playerlost(yourname);
+						}
+						if (ferrethealth < 1) {
+							//PLOT
+						}
+						String health = "You have "+playerHealth+" points of health. The ferret has "+ferrethealth+"points of health";
+						JOptionPane.showMessageDialog(null,health);
+						
+				}
+	}
+	static void playerlost(String yourname) {
+		//50:50 chance you die or get saved
+		int lod = new Random().nextInt(100);
+		if(lod >= 50) {
+			death();
+		}
+		else {
+			//you get saved
+		}
 	}
 	static void death() {
 		String de = "You die.";
 		JOptionPane.showMessageDialog(null,de);
 	}
 }
+
 
