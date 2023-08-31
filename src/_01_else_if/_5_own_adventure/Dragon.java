@@ -42,10 +42,10 @@ public class Dragon {
 			JOptionPane.showMessageDialog(null,success);
 			String escapeV = "As you escape the village, you have the choice to head east or west. \n To the west is a very small and unknown village. Or it would be if it weren't for the manor of the Beast Lord in the area. Despite that, it was a small and quiet town. \n Outside of the distance it would take to reach the village, the other major problem of heading there was that any half-a-brain cell idiot could figure out a murderer of King George's personal would head there. \n To the east is a marsh. No one will expect you in the marsh as it's known for it's dangers. However, rumors of magic orignating from there are too intriguing for you, and you feel an innate desire to head there. \n Do you go east or west?";
 			String lor = JOptionPane.showInputDialog(null,escapeV);	
-		if(lor.toLowerCase().equals("west")) {
+			if(lor.toLowerCase().equals("west")) {
 				west(dogname, MC);
 		}
-		else if(lor.toLowerCase().equals("west")) {
+			else if(lor.toLowerCase().equals("west")) {
 				east(dogname);
 			}
 		}
@@ -91,7 +91,8 @@ public class Dragon {
 		
 	}
 	static void prison(String dogname) {
-		JOptionPane.showMessageDialog(null,"The intruders jump in surprise. Regaining their compusure, they rush at you and +"+dogname +". \n One holds you back and as another pulls out a gleaming knife. You are forced to watch as the intruder kicks "+dogname+" in it's smoatch. He countinues to kick "+dogname+" until "+dogname+"'s whimpering quiets down. \n You watch as the intruder brings his knife to "+dogname+"'s body and he splits "+dogname+" in half. The other intruder knocks you out before you can relatiate.");
+		JOptionPane.showMessageDialog(null,"The intruders jump in surprise. Regaining their compusure, they rush at you and "+dogname +". \n One holds you back and as another pulls out a gleaming knife. You are forced to watch as the intruder kicks "+dogname+" in it's smoatch. He countinues to kick "+dogname+" until "+dogname+"'s whimpering quiets down. \n You watch as the intruder brings his knife to "+dogname+"'s body and he splits "+dogname+" in half. The other intruder knocks you out before you can relatiate.");
+		JOptionPane.showMessageDialog(null, "When you wake up, you find yourself inside a jail cell, tossed up aganist the side of a wall. Your cellmate kicks you muttering, \"Wake up you idiot.\" \n You try to swat away their leg but end up being kicked in the smoutach. Your cellmate lifts you up and explains the rules of the prison to you. You listen intently as the events prior counitnue to haunt you. \n As the days pass, you build on your plan to escape the prison. ");
 	}
 	static void west(String dogname, String MC) {
 		String renewV = "You head to the Village. Asten is a beautiful town, secluded in the forest and dappled with shadows, it has an air of mystersty and home.";
@@ -115,9 +116,9 @@ public class Dragon {
 JOptionPane.showMessageDialog(null,frosh);
 String fresh = "Suddenly, you hear a woof. You watch in awe as "+dogname+" soaring through the air. It's holding a sword with it's teeth. You yell out but "+dogname+" lands perfectly beside you. From your vantage point, you can see a group of people hidden in the bushes. They are cheering silently as they watch "+dogname+"land beside you.\n "+dogname+" hands you the sword. With your free hand, you grab the sword. The hostage next to you keeps talking, distracting the ferret. \n You are about to enter combat against the ferret.";
 		JOptionPane.showMessageDialog(null,fresh);
-		ferretFight(yourname);
+		ferretFight(yourname, dogname);
 	}
-	static void ferretFight(String yourname) {
+	static void ferretFight(String yourname, String dogname) {
 		// 1. Create some variables to hold health levels
 				int playerHealth = 100;
 				int ferrethealth = 100;
@@ -133,7 +134,7 @@ String fresh = "Suddenly, you hear a woof. You watch in awe as "+dogname+" soari
 					if (one.equals("kick")) {
 						Random t = new Random();
 						playerAttack = t.nextInt(25);
-						}
+					}
 						ferrethealth = ferrethealth - playerAttack;
 						Random r = new Random();
 						ferretAttack = r.nextInt(45);
@@ -142,6 +143,8 @@ String fresh = "Suddenly, you hear a woof. You watch in awe as "+dogname+" soari
 							playerlost(yourname);
 						}
 						if (ferrethealth < 1) {
+							JOptionPane.showMessageDialog(null, "The ferret recoils from your attacks and drops both you and his hostage. The hostage drops down with a graceful drop as you pant. \n The ferret's cracked monocle drops to the ground and the ferret turns around into the forest. ");
+							JOptionPane.showMessageDialog(null, "The former hostage turns to thank you but before you could say anything, you collapse into their arms. When you wake up a minute later, you can see "+ dogname +" and the hostage's face cover your view of the sky. The hostage is wearing a cape similar to royalty's and their fairly long hair glitters slightly in the light. With soft voice, they ask you for your name. \n You mangage to croak out \""+ yourname+".\" \n They smile and nod as you get up. As they thank you for saving them, the people in the bushes slink out to meet you. ");
 							//PLOT
 						}
 						String health = "You have "+playerHealth+" points of health. The ferret has "+ferrethealth+"points of health";
